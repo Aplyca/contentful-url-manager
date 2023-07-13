@@ -21,13 +21,13 @@ Create multiple paths in the same content to handle multiple URLs to the same co
 More in progress...
 
 
-## How to use
+## Installation
 
-### Automatic Installation
+### Automatic
 
 [![Install to Contentful](https://www.ctfstatic.com/button/install-small.svg)](https://app.contentful.com/deeplink?link=apps&id=2ZHom7iZP2MXu57JyR1Gp7)
 
-### Manual Installation
+### Manual
 
 Install the App using by doing the below steps:
 
