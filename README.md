@@ -41,7 +41,13 @@ Give a name to the bundle
 
 ![App Bundles Uploaded](./docs/showcase-image.png)
 
-You can find more details about hosting an [Contentful app her](https://www.contentful.com/developers/docs/extensibility/app-framework/hosting-an-app/)
+You can find more details about hosting an [Contentful app here](https://www.contentful.com/developers/docs/extensibility/app-framework/hosting-an-app/)
+
+## TO DO
+
+1. Improved initial path creation on new content.
+2. Update cascading child content when a parent changes its main slug.
+3. ...
 
 ## Learn More
 
