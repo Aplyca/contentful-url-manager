@@ -14,7 +14,7 @@ Create paths with depth defined by a hierarchy system of parent and child conten
 * `/parent1/child`: Content under one hierarchical parent.
 * `/parent1/child/another-child`: Content under two hierarchical parents.
 
-Crear múltiples path en un mismo contenido para manejar varias URLs hacia el mismo contenido; e.g.:
+Create multiple paths in the same content to handle multiple URLs to the same content; e.g.:
 
 * Content to manage the information on a contact page, you can have two paths, such as, `/contact` and `/contact-us`. In implementation it can be handled as independent content (duplicates for that matter), or redirect from one path to the other.
 
