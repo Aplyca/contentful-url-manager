@@ -1,5 +1,7 @@
 # Contentful URL Manager
 
+[![Install to Contentful](https://www.ctfstatic.com/button/install-small.svg)](https://app.contentful.com/deeplink?link=apps&id=2ZHom7iZP2MXu57JyR1Gp7)
+
 The Contentful URL Manager App is a simple [Contentful App](https://www.contentful.com/developers/docs/extensibility/app-framework/) that provides a way to create a system for generating dynamic URL paths with a tree structure. Additionally, the application allows you to store multiple paths in the same content and utilize them as needed.
 
 ![Contentful URL Manager](./docs/showcase-image.png)
@@ -21,13 +23,7 @@ Create multiple paths in the same content to handle multiple URLs to the same co
 More in progress...
 
 
-## Installation
-
-### Automatic
-
-[![Install to Contentful](https://www.ctfstatic.com/button/install-small.svg)](https://app.contentful.com/deeplink?link=apps&id=2ZHom7iZP2MXu57JyR1Gp7)
-
-### Manual
+## Manual Installation
 
 Install the App using by doing the below steps:
 
