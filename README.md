@@ -1,6 +1,6 @@
 # Contentful URL Manager
 
-[![Install to Contentful](https://www.ctfstatic.com/button/install-small.svg)](https://app.contentful.com/deeplink?link=apps&id=2ZHom7iZP2MXu57JyR1Gp7)
+[![Install to Contentful](https://www.ctfstatic.com/button/install-small.svg)](https://app.contentful.com/deeplink?link=apps&id=kLjkQFK44rW7yaGJq4vQj)
 
 The Contentful URL Manager App is a simple [Contentful App](https://www.contentful.com/developers/docs/extensibility/app-framework/) that provides a way to create a system for generating dynamic URL paths with a tree structure. Additionally, the application allows you to store multiple paths in the same content and utilize them as needed.
 
@@ -29,13 +29,23 @@ Install the App using by doing the below steps:
 
 1. Create a new Contentful custom App and define the Application Name (e.g. Broken References)
 
-2. Download this repo and drag the dist folder into the Bundles upload zone:
+2. Download this repo and drag the build folder into the Bundles upload zone:
 
-![App Bundles Upload](./docs/showcase-image.png)
+![App Bundles Upload](./docs/bundles.png)
 
-Give a name to the bundle
+3. Give a name to the bundle
 
-![App Bundles Uploaded](./docs/showcase-image.png)
+![App Name](./docs/appname.png)
+
+4. Create the required instance parameters
+
+![App Instance Parameters](./docs/instance-params.png)
+
+**Parent field name:** [required] short text field for identify the name of the parent field in this content type; remember it must be a reference to another content. ID: parentFieldName, default: parent.
+
+**Slug field name:** [required] short text field for identify the name of the slug field for get the slug of parents. ID: slugFieldName, default: slug.
+
+**Base slug remove:** short text field to manage stripping urls if you have a primary slug can remove this from urlPath. ID: baseSlugRemove.
 
 You can find more details about hosting an [Contentful app here](https://www.contentful.com/developers/docs/extensibility/app-framework/hosting-an-app/)
 
