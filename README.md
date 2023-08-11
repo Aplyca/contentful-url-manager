@@ -18,11 +18,17 @@ Create multiple paths in the same content to handle multiple URLs to the same co
 
 More in progress...
 
-## Install APP in your space
+## Installation
+
+### Install APP in your space
 
 [![Install to Contentful](https://www.ctfstatic.com/button/install-small.svg)](https://app.contentful.com/deeplink?link=apps&id=kLjkQFK44rW7yaGJq4vQj)
 
-## Manual Installation
+![Install in your space](./docs/image.png)
+
+or
+
+### Manual Installation
 
 Install the App using by doing the below steps:
 
