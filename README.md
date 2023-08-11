@@ -24,7 +24,7 @@ More in progress...
 
 [![Install to Contentful](https://www.ctfstatic.com/button/install-small.svg)](https://app.contentful.com/deeplink?link=apps&id=kLjkQFK44rW7yaGJq4vQj)
 
-![Install in your space](./docs/image.png)
+![Install in your space](./docs/install-app-space.png)
 
 or
 
@@ -56,7 +56,7 @@ You can find more details about hosting an [Contentful app here](https://www.con
 
 ## Assign APP to your content types
 
-![Contentful URL Manager](./docs/showcase-image.png)
+![Contentful URL Manager](./docs/configure-app-field.png)
 
 ## Create content
 
