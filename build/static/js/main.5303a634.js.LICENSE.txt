@@ -1,0 +1,1386 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/*!
+          * The buffer module from node.js, for the browser.
+          *
+          * @author   Feross Aboukhadijeh <http://feross.org>
+          * @license  MIT
+          */
+
+/*! ../../../upload-http-client */
+
+/*! ../adapters/REST/endpoints/workflow-definition */
+
+/*! ../adapters/xhr */
+
+/*! ../cancel/CanceledError */
+
+/*! ../cancel/isCancel */
+
+/*! ../common-utils */
+
+/*! ../core/AxiosError */
+
+/*! ../core/buildFullPath */
+
+/*! ../create-app-definition-api */
+
+/*! ../create-entry-api */
+
+/*! ../create-environment-api */
+
+/*! ../create-environment-template-api */
+
+/*! ../create-organization-api */
+
+/*! ../create-space-api */
+
+/*! ../create-ui-config-api */
+
+/*! ../create-user-ui-config-api */
+
+/*! ../defaults */
+
+/*! ../defaults/transitional */
+
+/*! ../enhance-with-methods */
+
+/*! ../env/data */
+
+/*! ../helpers/buildURL */
+
+/*! ../helpers/combineURLs */
+
+/*! ../helpers/isAbsoluteURL */
+
+/*! ../helpers/normalizeHeaderName */
+
+/*! ../helpers/parseProtocol */
+
+/*! ../helpers/toFormData */
+
+/*! ../helpers/validator */
+
+/*! ../lib/core/AxiosError */
+
+/*! ../methods/action */
+
+/*! ../methods/content-type */
+
+/*! ../plain/checks */
+
+/*! ../utils */
+
+/*! ./ */
+
+/*! ./../../../../webpack/buildin/global.js */
+
+/*! ./../../../node-libs-browser/node_modules/buffer/index.js */
+
+/*! ./../../../process/browser.js */
+
+/*! ./../../../webpack/buildin/global.js */
+
+/*! ./../../process/browser.js */
+
+/*! ./../core/settle */
+
+/*! ./../helpers/buildURL */
+
+/*! ./../helpers/cookies */
+
+/*! ./../helpers/isURLSameOrigin */
+
+/*! ./../helpers/parseHeaders */
+
+/*! ./../utils */
+
+/*! ./AxiosError */
+
+/*! ./CanceledError */
+
+/*! ./InterceptorManager */
+
+/*! ./adapters/REST/rest-adapter */
+
+/*! ./api-key */
+
+/*! ./app-action */
+
+/*! ./app-action-call */
+
+/*! ./app-bundle */
+
+/*! ./app-definition */
+
+/*! ./app-details */
+
+/*! ./app-installation */
+
+/*! ./app-signed-request */
+
+/*! ./app-signing-secret */
+
+/*! ./app-upload */
+
+/*! ./asset */
+
+/*! ./asset-key */
+
+/*! ./buildFullPath */
+
+/*! ./bulk-action */
+
+/*! ./cancel/CancelToken */
+
+/*! ./cancel/CanceledError */
+
+/*! ./cancel/isCancel */
+
+/*! ./comment */
+
+/*! ./common-types */
+
+/*! ./constants/editor-interface-defaults */
+
+/*! ./content-type */
+
+/*! ./contentful-management.ts */
+
+/*! ./controls-defaults */
+
+/*! ./core/Axios */
+
+/*! ./core/mergeConfig */
+
+/*! ./create-adapter */
+
+/*! ./create-contentful-api */
+
+/*! ./defaults */
+
+/*! ./dispatchRequest */
+
+/*! ./editor-interface */
+
+/*! ./editors-defaults */
+
+/*! ./endpoints */
+
+/*! ./entities */
+
+/*! ./entities/app-definition */
+
+/*! ./entities/environment-template-installation */
+
+/*! ./entities/release */
+
+/*! ./entities/release-action */
+
+/*! ./entities/tag */
+
+/*! ./entities/ui-config */
+
+/*! ./entities/user-ui-config */
+
+/*! ./entry */
+
+/*! ./env/FormData */
+
+/*! ./env/data */
+
+/*! ./environment */
+
+/*! ./environment-alias */
+
+/*! ./environment-template */
+
+/*! ./environment-template-installation */
+
+/*! ./export-types */
+
+/*! ./extension */
+
+/*! ./formats */
+
+/*! ./helpers/bind */
+
+/*! ./helpers/isAxiosError */
+
+/*! ./helpers/spread */
+
+/*! ./helpers/toFormData */
+
+/*! ./http */
+
+/*! ./implementation */
+
+/*! ./lib/axios */
+
+/*! ./locale */
+
+/*! ./mergeConfig */
+
+/*! ./organization */
+
+/*! ./organization-invitation */
+
+/*! ./organization-membership */
+
+/*! ./parse */
+
+/*! ./personal-access-token */
+
+/*! ./plain/as-iterator */
+
+/*! ./plain/checks */
+
+/*! ./plain/plain-client */
+
+/*! ./preview-api-key */
+
+/*! ./raw */
+
+/*! ./release */
+
+/*! ./release-action */
+
+/*! ./role */
+
+/*! ./scheduled-action */
+
+/*! ./shams */
+
+/*! ./sidebar-defaults */
+
+/*! ./snapshot */
+
+/*! ./space */
+
+/*! ./space-member */
+
+/*! ./space-membership */
+
+/*! ./stringify */
+
+/*! ./tag */
+
+/*! ./task */
+
+/*! ./team */
+
+/*! ./team-membership */
+
+/*! ./team-space-membership */
+
+/*! ./transformData */
+
+/*! ./transitional */
+
+/*! ./types */
+
+/*! ./ui-config */
+
+/*! ./upload */
+
+/*! ./usage */
+
+/*! ./user */
+
+/*! ./user-ui-config */
+
+/*! ./util.inspect */
+
+/*! ./utils */
+
+/*! ./webhook */
+
+/*! ./workflow */
+
+/*! ./workflow-definition */
+
+/*! ./workflows-changelog */
+
+/*! ./wrappers/wrap */
+
+/*! axios */
+
+/*! base64-js */
+
+/*! call-bind/callBound */
+
+/*! contentful-sdk-core */
+
+/*! exports provided: ALPHA_FEATURE_WORKFLOWS, get, getMany, create, update, del */
+
+/*! exports provided: AppActionCategoryType, wrapAppAction, wrapAppActionCollection */
+
+/*! exports provided: AsyncActionProcessingError, AsyncActionFailedError, pollAsyncActionStatus */
+
+/*! exports provided: BulkActionStatus, wrapBulkAction */
+
+/*! exports provided: EntryEditorWidgetTypes, EntryConfiguration */
+
+/*! exports provided: FIELD_TYPES, toInternalFieldType, DEFAULTS_WIDGET, DEFAULTS_SETTINGS, toApiFieldType, default */
+
+/*! exports provided: IconType, wrapAppDetails */
+
+/*! exports provided: RestAdapter */
+
+/*! exports provided: ScheduledActionReferenceFilters */
+
+/*! exports provided: SidebarEntryConfiguration, SidebarAssetConfiguration */
+
+/*! exports provided: ValidationError, create */
+
+/*! exports provided: WidgetNamespace, DEFAULT_EDITOR_ID, in_ */
+
+/*! exports provided: WorkflowStepPermissionType, WorkflowStepPermissionAction, WorkflowStepPermissionEffect, WorkflowStepActionType, default, wrapWorkflowDefinition, wrapWorkflowDefinitionCollection */
+
+/*! exports provided: asIterator */
+
+/*! exports provided: asIterator, isDraft, isPublished, isUpdated, createClient, RestAdapter, editorInterfaceDefaults, ScheduledActionReferenceFilters */
+
+/*! exports provided: create */
+
+/*! exports provided: create, del, get */
+
+/*! exports provided: create, get */
+
+/*! exports provided: create, getCallDetails */
+
+/*! exports provided: createAdapter */
+
+/*! exports provided: createEnvironmentTemplateApi */
+
+/*! exports provided: createHttpClient, createRequestConfig, enforceObjPath, errorHandler, freezeSys, getUserAgentHeader, toPlainObject */
+
+/*! exports provided: createPlainClient */
+
+/*! exports provided: default */
+
+/*! exports provided: default, wrapComment, wrapCommentCollection */
+
+/*! exports provided: default, wrapScheduledAction, wrapScheduledActionCollection */
+
+/*! exports provided: default, wrapTag, wrapTagCollection */
+
+/*! exports provided: default, wrapTask, wrapTaskCollection */
+
+/*! exports provided: get, del, create */
+
+/*! exports provided: get, getMany */
+
+/*! exports provided: get, getMany, create, createWithId, update, del */
+
+/*! exports provided: get, getMany, create, createWithId, update, del, publish, unpublish */
+
+/*! exports provided: get, getMany, create, del, update */
+
+/*! exports provided: get, getMany, create, revoke */
+
+/*! exports provided: get, getMany, create, update, del */
+
+/*! exports provided: get, getMany, create, update, del, getAll */
+
+/*! exports provided: get, getMany, create, update, versionUpdate, del, versions, validate, install, disconnect */
+
+/*! exports provided: get, getMany, createWithId, update, del */
+
+/*! exports provided: get, getMany, del, create */
+
+/*! exports provided: get, getMany, getAll, create, update, del */
+
+/*! exports provided: get, getMany, getForOrganization, getManyForOrganization, create, createWithId, update, del */
+
+/*! exports provided: get, getMany, getForOrganization, getManyForOrganization, create, update, del */
+
+/*! exports provided: get, getMany, getManyForEnvironment, del, create, update */
+
+/*! exports provided: get, getMany, getManyForSpace, create, update, del */
+
+/*! exports provided: get, getMany, queryForRelease */
+
+/*! exports provided: get, getMany, update */
+
+/*! exports provided: get, getMany, update, del */
+
+/*! exports provided: get, getMany, update, del, create, createWithId */
+
+/*! exports provided: get, getMany, update, del, publish, unpublish, archive, unarchive, create, createWithId, createFromFiles, processForLocale, processForAllLocales */
+
+/*! exports provided: get, getManyCallDetails, getCallDetails, getHealthStatus, getMany, create, createWithId, update, del */
+
+/*! exports provided: get, getManyForOrganization, getManyForTeam, create, update, del */
+
+/*! exports provided: get, getPublished, getMany, patch, update, del, publish, unpublish, archive, unarchive, create, createWithId, references */
+
+/*! exports provided: get, patch, post, put, del, http */
+
+/*! exports provided: get, post, put, patch, del, request */
+
+/*! exports provided: get, publish, unpublish, validate */
+
+/*! exports provided: get, query, create, update, del, publish, unpublish, validate, archive, unarchive */
+
+/*! exports provided: get, update */
+
+/*! exports provided: get, upsert, del */
+
+/*! exports provided: getAppDefinitionUrl, get, getMany, create, update, del, getInstallationsForOrg */
+
+/*! exports provided: getAppInstallationUrl, get, getMany, upsert, del, getForOrganization */
+
+/*! exports provided: getExtensionUrl, get, getMany, create, createWithId, update, del */
+
+/*! exports provided: getForSpace, getCurrent, getManyForSpace, getForOrganization, getManyForOrganization */
+
+/*! exports provided: getMany */
+
+/*! exports provided: getMany, create, update, del, complete */
+
+/*! exports provided: getMany, get */
+
+/*! exports provided: getMany, getForEnvironment */
+
+/*! exports provided: getManyForEntry, getForEntry, getManyForContentType, getForContentType */
+
+/*! exports provided: getManyForSpace, getManyForOrganization */
+
+/*! exports provided: getUploadHttpClient */
+
+/*! exports provided: isPublished, isUpdated, isDraft, isArchived */
+
+/*! exports provided: normalizeSelect, normalizeSpaceId */
+
+/*! exports provided: omitAndDeleteField */
+
+/*! exports provided: sleep */
+
+/*! exports provided: wrap */
+
+/*! exports provided: wrapApiKey, wrapApiKeyCollection */
+
+/*! exports provided: wrapAppActionCall */
+
+/*! exports provided: wrapAppBundle, wrapAppBundleCollection */
+
+/*! exports provided: wrapAppDefinition, wrapAppDefinitionCollection */
+
+/*! exports provided: wrapAppInstallation, wrapAppInstallationCollection */
+
+/*! exports provided: wrapAppSignedRequest */
+
+/*! exports provided: wrapAppSigningSecret */
+
+/*! exports provided: wrapAppUpload, wrapAppUploadCollection */
+
+/*! exports provided: wrapAsset, wrapAssetCollection */
+
+/*! exports provided: wrapAssetKey */
+
+/*! exports provided: wrapCollection, wrapCursorPaginatedCollection */
+
+/*! exports provided: wrapContentType, wrapContentTypeCollection */
+
+/*! exports provided: wrapEditorInterface, wrapEditorInterfaceCollection */
+
+/*! exports provided: wrapEntry, wrapEntryCollection */
+
+/*! exports provided: wrapEnvironment, wrapEnvironmentCollection */
+
+/*! exports provided: wrapEnvironmentAlias, wrapEnvironmentAliasCollection */
+
+/*! exports provided: wrapEnvironmentTemplate, wrapEnvironmentTemplateCollection */
+
+/*! exports provided: wrapEnvironmentTemplateInstallation, wrapEnvironmentTemplateInstallationCollection */
+
+/*! exports provided: wrapExtension, wrapExtensionCollection */
+
+/*! exports provided: wrapLocale, wrapLocaleCollection */
+
+/*! exports provided: wrapOrganization, wrapOrganizationCollection */
+
+/*! exports provided: wrapOrganizationInvitation */
+
+/*! exports provided: wrapOrganizationMembership, wrapOrganizationMembershipCollection */
+
+/*! exports provided: wrapPersonalAccessToken, wrapPersonalAccessTokenCollection */
+
+/*! exports provided: wrapPreviewApiKey, wrapPreviewApiKeyCollection */
+
+/*! exports provided: wrapRelease, wrapReleaseCollection */
+
+/*! exports provided: wrapReleaseAction, wrapReleaseActionCollection */
+
+/*! exports provided: wrapRole, wrapRoleCollection */
+
+/*! exports provided: wrapSnapshot, wrapSnapshotCollection */
+
+/*! exports provided: wrapSpace, wrapSpaceCollection */
+
+/*! exports provided: wrapSpaceMember, wrapSpaceMemberCollection */
+
+/*! exports provided: wrapSpaceMembership, wrapSpaceMembershipCollection */
+
+/*! exports provided: wrapTeam, wrapTeamCollection */
+
+/*! exports provided: wrapTeamMembership, wrapTeamMembershipCollection */
+
+/*! exports provided: wrapTeamSpaceMembership, wrapTeamSpaceMembershipCollection */
+
+/*! exports provided: wrapUIConfig */
+
+/*! exports provided: wrapUpload */
+
+/*! exports provided: wrapUsage, wrapUsageCollection */
+
+/*! exports provided: wrapUser, wrapUserCollection */
+
+/*! exports provided: wrapUserUIConfig */
+
+/*! exports provided: wrapWebhook, wrapWebhookCollection */
+
+/*! fast-copy */
+
+/*! function-bind */
+
+/*! get-intrinsic */
+
+/*! has */
+
+/*! has-symbols */
+
+/*! ieee754 */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/*! isarray */
+
+/*! lodash.isplainobject */
+
+/*! lodash.isstring */
+
+/*! no static exports found */
+
+/*! object-inspect */
+
+/*! p-throttle */
+
+/*! qs */
+
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
+/*! side-channel */
+
+/*!*************************!*\
+        !*** ./common-types.ts ***!
+        \*************************/
+
+/*!*************************!*\
+        !*** ./common-utils.ts ***!
+        \*************************/
+
+/*!*************************!*\
+        !*** ./entities/tag.ts ***!
+        \*************************/
+
+/*!*************************!*\
+        !*** ./export-types.ts ***!
+        \*************************/
+
+/*!*************************!*\
+        !*** ./plain/checks.ts ***!
+        \*************************/
+
+/*!**************************!*\
+        !*** ./entities/role.ts ***!
+        \**************************/
+
+/*!**************************!*\
+        !*** ./entities/task.ts ***!
+        \**************************/
+
+/*!**************************!*\
+        !*** ./entities/team.ts ***!
+        \**************************/
+
+/*!**************************!*\
+        !*** ./entities/user.ts ***!
+        \**************************/
+
+/*!**************************!*\
+        !*** ./methods/utils.ts ***!
+        \**************************/
+
+/*!***************************!*\
+        !*** ./create-adapter.ts ***!
+        \***************************/
+
+/*!***************************!*\
+        !*** ./entities/asset.ts ***!
+        \***************************/
+
+/*!***************************!*\
+        !*** ./entities/entry.ts ***!
+        \***************************/
+
+/*!***************************!*\
+        !*** ./entities/index.ts ***!
+        \***************************/
+
+/*!***************************!*\
+        !*** ./entities/space.ts ***!
+        \***************************/
+
+/*!***************************!*\
+        !*** ./entities/usage.ts ***!
+        \***************************/
+
+/*!***************************!*\
+        !*** ./methods/action.ts ***!
+        \***************************/
+
+/*!****************************!*\
+        !*** ./entities/locale.ts ***!
+        \****************************/
+
+/*!****************************!*\
+        !*** ./entities/upload.ts ***!
+        \****************************/
+
+/*!*****************************!*\
+        !*** ./create-entry-api.ts ***!
+        \*****************************/
+
+/*!*****************************!*\
+        !*** ./create-space-api.ts ***!
+        \*****************************/
+
+/*!*****************************!*\
+        !*** ./entities/api-key.ts ***!
+        \*****************************/
+
+/*!*****************************!*\
+        !*** ./entities/comment.ts ***!
+        \*****************************/
+
+/*!*****************************!*\
+        !*** ./entities/release.ts ***!
+        \*****************************/
+
+/*!*****************************!*\
+        !*** ./entities/webhook.ts ***!
+        \*****************************/
+
+/*!******************************!*\
+        !*** ./entities/snapshot.ts ***!
+        \******************************/
+
+/*!******************************!*\
+        !*** ./plain/as-iterator.ts ***!
+        \******************************/
+
+/*!*******************************!*\
+        !*** ./entities/asset-key.ts ***!
+        \*******************************/
+
+/*!*******************************!*\
+        !*** ./entities/extension.ts ***!
+        \*******************************/
+
+/*!*******************************!*\
+        !*** ./entities/ui-config.ts ***!
+        \*******************************/
+
+/*!*******************************!*\
+        !*** ./plain/plain-client.ts ***!
+        \*******************************/
+
+/*!*******************************!*\
+        !*** ./upload-http-client.ts ***!
+        \*******************************/
+
+/*!********************************!*\
+        !*** ./entities/app-action.ts ***!
+        \********************************/
+
+/*!********************************!*\
+        !*** ./entities/app-bundle.ts ***!
+        \********************************/
+
+/*!********************************!*\
+        !*** ./entities/app-upload.ts ***!
+        \********************************/
+
+/*!********************************!*\
+        !*** ./plain/wrappers/wrap.ts ***!
+        \********************************/
+
+/*!********************************!*\
+        !*** ./util.inspect (ignored) ***!
+        \********************************/
+
+/*!*********************************!*\
+        !*** ./create-ui-config-api.ts ***!
+        \*********************************/
+
+/*!*********************************!*\
+        !*** ./enhance-with-methods.ts ***!
+        \*********************************/
+
+/*!*********************************!*\
+        !*** ./entities/app-details.ts ***!
+        \*********************************/
+
+/*!*********************************!*\
+        !*** ./entities/bulk-action.ts ***!
+        \*********************************/
+
+/*!*********************************!*\
+        !*** ./entities/environment.ts ***!
+        \*********************************/
+
+/*!*********************************!*\
+        !*** ./methods/content-type.ts ***!
+        \*********************************/
+
+/*!**********************************!*\
+        !*** ./contentful-management.ts ***!
+        \**********************************/
+
+/*!**********************************!*\
+        !*** ./create-contentful-api.ts ***!
+        \**********************************/
+
+/*!**********************************!*\
+        !*** ./entities/content-type.ts ***!
+        \**********************************/
+
+/*!**********************************!*\
+        !*** ./entities/organization.ts ***!
+        \**********************************/
+
+/*!**********************************!*\
+        !*** ./entities/space-member.ts ***!
+        \**********************************/
+
+/*!***********************************!*\
+        !*** ./create-environment-api.ts ***!
+        \***********************************/
+
+/*!************************************!*\
+        !*** ./create-organization-api.ts ***!
+        \************************************/
+
+/*!************************************!*\
+        !*** ./entities/app-definition.ts ***!
+        \************************************/
+
+/*!************************************!*\
+        !*** ./entities/release-action.ts ***!
+        \************************************/
+
+/*!************************************!*\
+        !*** ./entities/user-ui-config.ts ***!
+        \************************************/
+
+/*!*************************************!*\
+        !*** ./entities/app-action-call.ts ***!
+        \*************************************/
+
+/*!*************************************!*\
+        !*** ./entities/preview-api-key.ts ***!
+        \*************************************/
+
+/*!*************************************!*\
+        !*** ./entities/team-membership.ts ***!
+        \*************************************/
+
+/*!**************************************!*\
+        !*** ../node_modules/axios/index.js ***!
+        \**************************************/
+
+/*!**************************************!*\
+        !*** ./create-app-definition-api.ts ***!
+        \**************************************/
+
+/*!**************************************!*\
+        !*** ./create-user-ui-config-api.ts ***!
+        \**************************************/
+
+/*!**************************************!*\
+        !*** ./entities/app-installation.ts ***!
+        \**************************************/
+
+/*!**************************************!*\
+        !*** ./entities/editor-interface.ts ***!
+        \**************************************/
+
+/*!**************************************!*\
+        !*** ./entities/scheduled-action.ts ***!
+        \**************************************/
+
+/*!**************************************!*\
+        !*** ./entities/space-membership.ts ***!
+        \**************************************/
+
+/*!***************************************!*\
+        !*** ../node_modules/qs/lib/index.js ***!
+        \***************************************/
+
+/*!***************************************!*\
+        !*** ../node_modules/qs/lib/parse.js ***!
+        \***************************************/
+
+/*!***************************************!*\
+        !*** ../node_modules/qs/lib/utils.js ***!
+        \***************************************/
+
+/*!***************************************!*\
+        !*** ./adapters/REST/rest-adapter.ts ***!
+        \***************************************/
+
+/*!***************************************!*\
+        !*** ./entities/environment-alias.ts ***!
+        \***************************************/
+
+/*!****************************************!*\
+        !*** ../node_modules/has/src/index.js ***!
+        \****************************************/
+
+/*!****************************************!*\
+        !*** ../node_modules/ieee754/index.js ***!
+        \****************************************/
+
+/*!****************************************!*\
+        !*** ../node_modules/isarray/index.js ***!
+        \****************************************/
+
+/*!****************************************!*\
+        !*** ./adapters/REST/endpoints/raw.ts ***!
+        \****************************************/
+
+/*!****************************************!*\
+        !*** ./adapters/REST/endpoints/tag.ts ***!
+        \****************************************/
+
+/*!****************************************!*\
+        !*** ./entities/app-signed-request.ts ***!
+        \****************************************/
+
+/*!****************************************!*\
+        !*** ./entities/app-signing-secret.ts ***!
+        \****************************************/
+
+/*!****************************************!*\
+        !*** multi ./contentful-management.ts ***!
+        \****************************************/
+
+/*!*****************************************!*\
+        !*** ../node_modules/qs/lib/formats.js ***!
+        \*****************************************/
+
+/*!*****************************************!*\
+        !*** ./adapters/REST/endpoints/http.ts ***!
+        \*****************************************/
+
+/*!*****************************************!*\
+        !*** ./adapters/REST/endpoints/role.ts ***!
+        \*****************************************/
+
+/*!*****************************************!*\
+        !*** ./adapters/REST/endpoints/task.ts ***!
+        \*****************************************/
+
+/*!*****************************************!*\
+        !*** ./adapters/REST/endpoints/team.ts ***!
+        \*****************************************/
+
+/*!*****************************************!*\
+        !*** ./adapters/REST/endpoints/user.ts ***!
+        \*****************************************/
+
+/*!*****************************************!*\
+        !*** ./entities/workflow-definition.ts ***!
+        \*****************************************/
+
+/*!******************************************!*\
+        !*** ../node_modules/axios/lib/axios.js ***!
+        \******************************************/
+
+/*!******************************************!*\
+        !*** ../node_modules/axios/lib/utils.js ***!
+        \******************************************/
+
+/*!******************************************!*\
+        !*** ../node_modules/base64-js/index.js ***!
+        \******************************************/
+
+/*!******************************************!*\
+        !*** ../node_modules/call-bind/index.js ***!
+        \******************************************/
+
+/*!******************************************!*\
+        !*** ../node_modules/process/browser.js ***!
+        \******************************************/
+
+/*!******************************************!*\
+        !*** ./adapters/REST/endpoints/asset.ts ***!
+        \******************************************/
+
+/*!******************************************!*\
+        !*** ./adapters/REST/endpoints/entry.ts ***!
+        \******************************************/
+
+/*!******************************************!*\
+        !*** ./adapters/REST/endpoints/index.ts ***!
+        \******************************************/
+
+/*!******************************************!*\
+        !*** ./adapters/REST/endpoints/space.ts ***!
+        \******************************************/
+
+/*!******************************************!*\
+        !*** ./adapters/REST/endpoints/usage.ts ***!
+        \******************************************/
+
+/*!******************************************!*\
+        !*** ./adapters/REST/endpoints/utils.ts ***!
+        \******************************************/
+
+/*!******************************************!*\
+        !*** ./entities/environment-template.ts ***!
+        \******************************************/
+
+/*!*******************************************!*\
+        !*** ../node_modules/p-throttle/index.js ***!
+        \*******************************************/
+
+/*!*******************************************!*\
+        !*** ../node_modules/qs/lib/stringify.js ***!
+        \*******************************************/
+
+/*!*******************************************!*\
+        !*** ./adapters/REST/endpoints/locale.ts ***!
+        \*******************************************/
+
+/*!*******************************************!*\
+        !*** ./adapters/REST/endpoints/upload.ts ***!
+        \*******************************************/
+
+/*!*******************************************!*\
+        !*** ./entities/personal-access-token.ts ***!
+        \*******************************************/
+
+/*!*******************************************!*\
+        !*** ./entities/team-space-membership.ts ***!
+        \*******************************************/
+
+/*!********************************************!*\
+        !*** ../node_modules/has-symbols/index.js ***!
+        \********************************************/
+
+/*!********************************************!*\
+        !*** ../node_modules/has-symbols/shams.js ***!
+        \********************************************/
+
+/*!********************************************!*\
+        !*** ./adapters/REST/endpoints/api-key.ts ***!
+        \********************************************/
+
+/*!********************************************!*\
+        !*** ./adapters/REST/endpoints/comment.ts ***!
+        \********************************************/
+
+/*!********************************************!*\
+        !*** ./adapters/REST/endpoints/release.ts ***!
+        \********************************************/
+
+/*!********************************************!*\
+        !*** ./adapters/REST/endpoints/webhook.ts ***!
+        \********************************************/
+
+/*!********************************************!*\
+        !*** ./create-environment-template-api.ts ***!
+        \********************************************/
+
+/*!*********************************************!*\
+        !*** ../node_modules/axios/lib/env/data.js ***!
+        \*********************************************/
+
+/*!*********************************************!*\
+        !*** ../node_modules/side-channel/index.js ***!
+        \*********************************************/
+
+/*!*********************************************!*\
+        !*** ./adapters/REST/endpoints/snapshot.ts ***!
+        \*********************************************/
+
+/*!*********************************************!*\
+        !*** ./adapters/REST/endpoints/workflow.ts ***!
+        \*********************************************/
+
+/*!*********************************************!*\
+        !*** ./entities/organization-invitation.ts ***!
+        \*********************************************/
+
+/*!*********************************************!*\
+        !*** ./entities/organization-membership.ts ***!
+        \*********************************************/
+
+/*!**********************************************!*\
+        !*** ../node_modules/call-bind/callBound.js ***!
+        \**********************************************/
+
+/*!**********************************************!*\
+        !*** ../node_modules/function-bind/index.js ***!
+        \**********************************************/
+
+/*!**********************************************!*\
+        !*** ../node_modules/get-intrinsic/index.js ***!
+        \**********************************************/
+
+/*!**********************************************!*\
+        !*** ./adapters/REST/endpoints/asset-key.ts ***!
+        \**********************************************/
+
+/*!**********************************************!*\
+        !*** ./adapters/REST/endpoints/extension.ts ***!
+        \**********************************************/
+
+/*!**********************************************!*\
+        !*** ./adapters/REST/endpoints/ui-config.ts ***!
+        \**********************************************/
+
+/*!***********************************************!*\
+        !*** ../node_modules/axios/lib/core/Axios.js ***!
+        \***********************************************/
+
+/*!***********************************************!*\
+        !*** ../node_modules/object-inspect/index.js ***!
+        \***********************************************/
+
+/*!***********************************************!*\
+        !*** ./adapters/REST/endpoints/app-action.ts ***!
+        \***********************************************/
+
+/*!***********************************************!*\
+        !*** ./adapters/REST/endpoints/app-bundle.ts ***!
+        \***********************************************/
+
+/*!***********************************************!*\
+        !*** ./adapters/REST/endpoints/app-upload.ts ***!
+        \***********************************************/
+
+/*!************************************************!*\
+        !*** ../node_modules/axios/lib/core/settle.js ***!
+        \************************************************/
+
+/*!************************************************!*\
+        !*** ../node_modules/lodash.isstring/index.js ***!
+        \************************************************/
+
+/*!************************************************!*\
+        !*** ./adapters/REST/endpoints/app-details.ts ***!
+        \************************************************/
+
+/*!************************************************!*\
+        !*** ./adapters/REST/endpoints/bulk-action.ts ***!
+        \************************************************/
+
+/*!************************************************!*\
+        !*** ./adapters/REST/endpoints/environment.ts ***!
+        \************************************************/
+
+/*!*************************************************!*\
+        !*** ../node_modules/axios/lib/adapters/xhr.js ***!
+        \*************************************************/
+
+/*!*************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/bind.js ***!
+        \*************************************************/
+
+/*!*************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/null.js ***!
+        \*************************************************/
+
+/*!*************************************************!*\
+        !*** ../node_modules/webpack/buildin/global.js ***!
+        \*************************************************/
+
+/*!*************************************************!*\
+        !*** ./adapters/REST/endpoints/content-type.ts ***!
+        \*************************************************/
+
+/*!*************************************************!*\
+        !*** ./adapters/REST/endpoints/organization.ts ***!
+        \*************************************************/
+
+/*!*************************************************!*\
+        !*** ./adapters/REST/endpoints/space-member.ts ***!
+        \*************************************************/
+
+/*!***************************************************!*\
+        !*** ../node_modules/axios/lib/defaults/index.js ***!
+        \***************************************************/
+
+/*!***************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/spread.js ***!
+        \***************************************************/
+
+/*!***************************************************!*\
+        !*** ../node_modules/fast-copy/dist/umd/index.js ***!
+        \***************************************************/
+
+/*!***************************************************!*\
+        !*** ./adapters/REST/endpoints/app-definition.ts ***!
+        \***************************************************/
+
+/*!***************************************************!*\
+        !*** ./adapters/REST/endpoints/release-action.ts ***!
+        \***************************************************/
+
+/*!***************************************************!*\
+        !*** ./adapters/REST/endpoints/user-ui-config.ts ***!
+        \***************************************************/
+
+/*!****************************************************!*\
+        !*** ../node_modules/axios/lib/cancel/isCancel.js ***!
+        \****************************************************/
+
+/*!****************************************************!*\
+        !*** ../node_modules/axios/lib/core/AxiosError.js ***!
+        \****************************************************/
+
+/*!****************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/cookies.js ***!
+        \****************************************************/
+
+/*!****************************************************!*\
+        !*** ./adapters/REST/endpoints/app-action-call.ts ***!
+        \****************************************************/
+
+/*!****************************************************!*\
+        !*** ./adapters/REST/endpoints/preview-api-key.ts ***!
+        \****************************************************/
+
+/*!****************************************************!*\
+        !*** ./adapters/REST/endpoints/team-membership.ts ***!
+        \****************************************************/
+
+/*!*****************************************************!*\
+        !*** ../node_modules/axios/lib/core/mergeConfig.js ***!
+        \*****************************************************/
+
+/*!*****************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/buildURL.js ***!
+        \*****************************************************/
+
+/*!*****************************************************!*\
+        !*** ../node_modules/lodash.isplainobject/index.js ***!
+        \*****************************************************/
+
+/*!*****************************************************!*\
+        !*** ./adapters/REST/endpoints/app-installation.ts ***!
+        \*****************************************************/
+
+/*!*****************************************************!*\
+        !*** ./adapters/REST/endpoints/editor-interface.ts ***!
+        \*****************************************************/
+
+/*!*****************************************************!*\
+        !*** ./adapters/REST/endpoints/scheduled-action.ts ***!
+        \*****************************************************/
+
+/*!*****************************************************!*\
+        !*** ./adapters/REST/endpoints/space-membership.ts ***!
+        \*****************************************************/
+
+/*!******************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/validator.js ***!
+        \******************************************************/
+
+/*!******************************************************!*\
+        !*** ./adapters/REST/endpoints/environment-alias.ts ***!
+        \******************************************************/
+
+/*!******************************************************!*\
+        !*** ./constants/editor-interface-defaults/index.ts ***!
+        \******************************************************/
+
+/*!******************************************************!*\
+        !*** ./constants/editor-interface-defaults/types.ts ***!
+        \******************************************************/
+
+/*!*******************************************************!*\
+        !*** ../node_modules/axios/lib/cancel/CancelToken.js ***!
+        \*******************************************************/
+
+/*!*******************************************************!*\
+        !*** ../node_modules/axios/lib/core/buildFullPath.js ***!
+        \*******************************************************/
+
+/*!*******************************************************!*\
+        !*** ../node_modules/axios/lib/core/transformData.js ***!
+        \*******************************************************/
+
+/*!*******************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/toFormData.js ***!
+        \*******************************************************/
+
+/*!*******************************************************!*\
+        !*** ../node_modules/function-bind/implementation.js ***!
+        \*******************************************************/
+
+/*!*******************************************************!*\
+        !*** ./adapters/REST/endpoints/app-signed-request.ts ***!
+        \*******************************************************/
+
+/*!*******************************************************!*\
+        !*** ./adapters/REST/endpoints/app-signing-secret.ts ***!
+        \*******************************************************/
+
+/*!*******************************************************!*\
+        !*** ./entities/environment-template-installation.ts ***!
+        \*******************************************************/
+
+/*!********************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/combineURLs.js ***!
+        \********************************************************/
+
+/*!********************************************************!*\
+        !*** ./adapters/REST/endpoints/workflow-definition.ts ***!
+        \********************************************************/
+
+/*!********************************************************!*\
+        !*** ./adapters/REST/endpoints/workflows-changelog.ts ***!
+        \********************************************************/
+
+/*!*********************************************************!*\
+        !*** ../node_modules/axios/lib/cancel/CanceledError.js ***!
+        \*********************************************************/
+
+/*!*********************************************************!*\
+        !*** ../node_modules/axios/lib/core/dispatchRequest.js ***!
+        \*********************************************************/
+
+/*!*********************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/isAxiosError.js ***!
+        \*********************************************************/
+
+/*!*********************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/parseHeaders.js ***!
+        \*********************************************************/
+
+/*!*********************************************************!*\
+        !*** ./adapters/REST/endpoints/environment-template.ts ***!
+        \*********************************************************/
+
+/*!**********************************************************!*\
+        !*** ../node_modules/axios/lib/defaults/transitional.js ***!
+        \**********************************************************/
+
+/*!**********************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
+        \**********************************************************/
+
+/*!**********************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/parseProtocol.js ***!
+        \**********************************************************/
+
+/*!**********************************************************!*\
+        !*** ./adapters/REST/endpoints/personal-access-token.ts ***!
+        \**********************************************************/
+
+/*!**********************************************************!*\
+        !*** ./adapters/REST/endpoints/team-space-membership.ts ***!
+        \**********************************************************/
+
+/*!************************************************************!*\
+        !*** ../node_modules/axios/lib/core/InterceptorManager.js ***!
+        \************************************************************/
+
+/*!************************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/isURLSameOrigin.js ***!
+        \************************************************************/
+
+/*!************************************************************!*\
+        !*** ./adapters/REST/endpoints/organization-invitation.ts ***!
+        \************************************************************/
+
+/*!************************************************************!*\
+        !*** ./adapters/REST/endpoints/organization-membership.ts ***!
+        \************************************************************/
+
+/*!****************************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/normalizeHeaderName.js ***!
+        \****************************************************************/
+
+/*!*****************************************************************!*\
+        !*** ./constants/editor-interface-defaults/editors-defaults.ts ***!
+        \*****************************************************************/
+
+/*!*****************************************************************!*\
+        !*** ./constants/editor-interface-defaults/sidebar-defaults.ts ***!
+        \*****************************************************************/
+
+/*!******************************************************************!*\
+        !*** ./constants/editor-interface-defaults/controls-defaults.ts ***!
+        \******************************************************************/
+
+/*!********************************************************************!*\
+        !*** ../node_modules/contentful-sdk-core/dist/index.es-modules.js ***!
+        \********************************************************************/
+
+/*!**********************************************************************!*\
+        !*** ../node_modules/node-libs-browser/node_modules/buffer/index.js ***!
+        \**********************************************************************/
+
+/*!**********************************************************************!*\
+        !*** ./adapters/REST/endpoints/environment-template-installation.ts ***!
+        \**********************************************************************/
+
+/*!************************************************************************************!*\
+        !*** ../node_modules/contentful-sdk-core/node_modules/fast-copy/dist/fast-copy.js ***!
+        \************************************************************************************/
+
+/** @license React v0.20.2
+ * scheduler.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react-dom.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
