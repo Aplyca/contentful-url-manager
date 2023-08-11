@@ -4,10 +4,6 @@
 
 The Contentful URL Manager App is a simple [Contentful App](https://www.contentful.com/developers/docs/extensibility/app-framework/) that provides a way to create a system for generating dynamic URL paths with a tree structure. Additionally, the application allows you to store multiple paths in the same content and utilize them as needed.
 
-![Contentful URL Manager](./docs/showcase-image.png)
-
-*Example of a content that has as parent another content with path `/contentful-url-manager` and this in turn does not have a parent and two extra paths*
-
 ## Use Cases
 
 Create paths with depth defined by a hierarchy system of parent and child contents; e.g.:
@@ -22,6 +18,9 @@ Create multiple paths in the same content to handle multiple URLs to the same co
 
 More in progress...
 
+## Install APP in your space
+
+[![Install to Contentful](https://www.ctfstatic.com/button/install-small.svg)](https://app.contentful.com/deeplink?link=apps&id=kLjkQFK44rW7yaGJq4vQj)
 
 ## Manual Installation
 
@@ -48,6 +47,17 @@ Install the App using by doing the below steps:
 **Base slug remove:** short text field to manage stripping urls if you have a primary slug can remove this from urlPath. ID: baseSlugRemove.
 
 You can find more details about hosting an [Contentful app here](https://www.contentful.com/developers/docs/extensibility/app-framework/hosting-an-app/)
+
+## Assign APP to your content types
+
+![Contentful URL Manager](./docs/showcase-image.png)
+
+## Create content
+
+![Contentful URL Manager](./docs/showcase-image-2.png)
+
+*Example of a content that has as parent another content with path `/contentful-url-manager` and this in turn does not have a parent and two extra paths*
+
 
 ## Implementation Example
 
