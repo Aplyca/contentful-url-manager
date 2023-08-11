@@ -49,11 +49,90 @@ Install the App using by doing the below steps:
 
 You can find more details about hosting an [Contentful app here](https://www.contentful.com/developers/docs/extensibility/app-framework/hosting-an-app/)
 
+## Implementation Example
+
+### 1. NextJS
+
+The following example shows a code snippet that implements the Contentful APP in Next.JS to permanently redirect non-primary URLs.
+
+```javascript
+// ...Page component definition
+
+const getPageContent = async (urlPath, preview = false) => {
+  if (!urlPath || urlPath === '') {
+    throw new Error(`«urlPath» is required`);
+  }
+
+  let responseData = null;
+  let responseError = null;
+
+  try {
+    ({ data: responseData, error: responseError } = await contentfulClient(preview).query({
+      query: gql`
+        query getPage($urlPath: String!, $preview: Boolean!) {
+          pageCollection(where: { urlPaths_contains_some: [$urlPath] }, limit: 1, preview: $preview) {
+            items {
+              title
+              urlPaths
+              content
+            }
+          }
+        }
+      `,
+      variables: {
+        urlPath,
+        preview
+      },
+      errorPolicy: 'all'
+    }));
+  } catch (e) {
+    console.error(e);
+    responseData = {};
+  }
+
+  return responseData?.pageCollection?.items?.[0] ?? null;
+}
+
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
+): Promise<GetStaticPropsResult<IPage>> => {
+  const slugArray =
+    typeof context.params.slug === "string"
+      ? ["", context.params.slug]
+      : ["", ...context.params.slug];
+  const slugStringPath = slugArray.join("/");
+
+  const pageContent = await getPageContent(
+    slugStringPath,
+    context.preview ?? false
+  );
+
+  if (!pageContent) return { notFound: true };
+  if (pageContent.urlPaths[0] !== slugStringPath) {
+    return {
+      redirect: {
+        destination: pageContent.urlPaths[0],
+        permanent: false,
+      },
+    };
+  }
+
+  // ... do stuffs
+
+  return {
+    props: {
+      pageContent
+    }
+  }
+}
+```
+
 ## TO DO
 
 1. Improved initial path creation on new content.
 2. Update cascading child content when a parent changes its main slug.
-3. ...
+3. Add code snippets for multiple frameworks.
+4. ...
 
 ## Learn More
 
