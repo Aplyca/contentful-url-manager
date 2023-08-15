@@ -32,7 +32,7 @@ or
 
 Install the App using by doing the below steps:
 
-1. Create a new Contentful custom App and define the Application Name (e.g. Broken References)
+1. Create a new Contentful custom App and define the Application Name (e.g. URL Manager)
 
 2. Download this repo and drag the build folder into the Bundles upload zone:
 
