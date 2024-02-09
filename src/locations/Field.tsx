@@ -7,13 +7,12 @@ import {
   Text,
   TextInput,
 } from "@contentful/f36-components";
-import { FieldExtensionSDK } from "@contentful/app-sdk";
-import { useCMA, useSDK } from "@contentful/react-apps-toolkit";
+import { FieldAppSDK } from "@contentful/app-sdk";
+import { useSDK } from "@contentful/react-apps-toolkit";
 import { useDebounce } from "../hooks/useDebounce";
 
 const Field = () => {
-  const sdk = useSDK<FieldExtensionSDK>();
-  const cma = useCMA();
+  const sdk = useSDK<FieldAppSDK>();
 
   const BASE_SLUG_REMOVE = sdk.parameters.instance.baseSlugRemove;
   const PARENT_FIELD_NAME = sdk.parameters.instance.parentFieldName;
@@ -32,33 +31,36 @@ const Field = () => {
   );
 
   // path defined by slug, can't be deleted
-  const [slugValue, setSlugValue] = useState<string>(urlPaths[0] ?? "");
+  const [slugValue, setSlugValue] = useState<string>(urlPaths[0]);
   const mainUrlPath = useDebounce<string>(slugValue, 800);
 
   const [redundant, setRedundant] = useState<boolean>(false);
 
   const getParentSlug = useCallback(
-    async (entryId: string): Promise<string[]> => {
+    async (entryId: string, locale: string): Promise<string[]> => {
       const slugs: string[] = [];
       if (entryId === sdk.entry.getSys().id) {
         setRedundant(true);
         return slugs;
       }
 
-      const entryContent = await cma.entry.get({ entryId });
+      const entryContent = await sdk.cma.entry.get({ entryId });
 
       if (
         entryContent &&
         entryContent?.fields[PARENT_FIELD_NAME] &&
-        entryContent?.fields[PARENT_FIELD_NAME][DEFAULT_LOCALE]?.sys?.id
+        entryContent?.fields[PARENT_FIELD_NAME][locale]?.sys?.id
       ) {
         const parentContentSlug = await getParentSlug(
-          entryContent.fields[PARENT_FIELD_NAME][DEFAULT_LOCALE].sys.id
+          entryContent.fields[PARENT_FIELD_NAME][locale].sys.id,
+          locale
         );
         slugs.push(...parentContentSlug);
       }
 
-      slugs.push(entryContent.fields[SLUG_FIELD_NAME][DEFAULT_LOCALE]);
+      if (entryContent?.fields?.[SLUG_FIELD_NAME]?.[locale]) {
+        slugs.push(entryContent.fields[SLUG_FIELD_NAME][locale]);
+      }
       return slugs;
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -89,7 +91,6 @@ const Field = () => {
 
   useEffect(() => {
     const updateFieldValue = async () => {
-      console.log('old', urlPaths);
       let newUrlPaths = [...urlPaths].filter((u) => u !== mainUrlPath);
 
       if (newUrlPaths.length > 0) {
@@ -97,7 +98,7 @@ const Field = () => {
       } else {
         newUrlPaths = [mainUrlPath];
       }
-      console.log('new', newUrlPaths);
+
       setUrlPaths(newUrlPaths);
       await sdk.field.setValue(newUrlPaths);
     };
@@ -105,50 +106,76 @@ const Field = () => {
     if (mainUrlPath && mainUrlPath !== "") {
       updateFieldValue();
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mainUrlPath]);
 
   useEffect(() => {
-    parentFieldContent.onValueChanged(async (contentReference: any) => {
-      setRedundant(false);
-      const urlPathTemp = [slugFieldContent.getValue()];
+    const detachParentValueChangeHandler = parentFieldContent.onValueChanged(
+      async (contentReference: any) => {
+        setRedundant(false);
+        const urlPathTemp = [slugFieldContent.getForLocale(DEFAULT_LOCALE).getValue()];
 
-      if (contentReference?.sys?.id) {
-        const parentContentSlugs = await getParentSlug(contentReference.sys.id);
-        urlPathTemp.unshift(...parentContentSlugs);
+        if (contentReference?.sys?.id) {
+          const parentContentSlugs = await getParentSlug(
+            contentReference.sys.id,
+            DEFAULT_LOCALE
+          );
+          urlPathTemp.unshift(...parentContentSlugs);
+        }
+
+        let urlPathString = ["", ...urlPathTemp].join("/");
+        if (BASE_SLUG_REMOVE && BASE_SLUG_REMOVE !== "") {
+          const re = new RegExp(`^${BASE_SLUG_REMOVE}`);
+
+          urlPathString = urlPathString.replace(re, "");
+          urlPathString = urlPathString.match("^/")
+            ? urlPathString
+            : `/${urlPathString}`;
+        }
+
+        setSlugValue(urlPathString);
       }
+    );
 
-      let urlPathString = ["", ...urlPathTemp].join("/");
-      if (BASE_SLUG_REMOVE && BASE_SLUG_REMOVE !== "") {
-        const re = new RegExp(`^${BASE_SLUG_REMOVE}`);
+    const detachSlugValueChangeHandler = slugFieldContent
+      .getForLocale(DEFAULT_LOCALE)
+      .onValueChanged(async (slugFieldText: string) => {
+        const parentFieldValue = parentFieldContent.getValue();
+        const urlPathTemp = urlPaths[0]
+          ? urlPaths[0].split("/").slice(0, -1)
+          : [];
+        urlPathTemp.push(slugFieldText);
 
-        urlPathString = urlPathString.replace(re, "");
-        urlPathString = urlPathString.match("^/")
-          ? urlPathString
-          : `/${urlPathString}`;
-      }
+        if (!urlPaths?.[0] && parentFieldValue?.sys?.id) {
+          const parentContentSlugs = await getParentSlug(
+            parentFieldValue.sys.id,
+            DEFAULT_LOCALE
+          );
+          urlPathTemp.unshift(...parentContentSlugs);
+        }
 
-      setSlugValue(urlPathString);
-    });
+        if (!urlPaths[0]) {
+          urlPathTemp.unshift("");
+        }
 
-    slugFieldContent.onValueChanged(async (slugFieldText: string) => {
-      const urlPathTemp = urlPaths[0]
-        ? urlPaths[0].split("/").slice(0, -1)
-        : [""];
-      urlPathTemp.push(slugFieldText);
+        let urlPathString = urlPathTemp.join("/");
+        if (BASE_SLUG_REMOVE && BASE_SLUG_REMOVE !== "") {
+          const re = new RegExp(`^${BASE_SLUG_REMOVE}`);
 
-      let urlPathString = urlPathTemp.join("/");
-      if (BASE_SLUG_REMOVE && BASE_SLUG_REMOVE !== "") {
-        const re = new RegExp(`^${BASE_SLUG_REMOVE}`);
+          urlPathString = urlPathString.replace(re, "");
+          urlPathString = urlPathString.match("^/")
+            ? urlPathString
+            : `/${urlPathString}`;
+        }
 
-        urlPathString = urlPathString.replace(re, "");
-        urlPathString = urlPathString.match("^/")
-          ? urlPathString
-          : `/${urlPathString}`;
-      }
+        setSlugValue(urlPathString);
+      });
 
-      setSlugValue(urlPathString);
-    });
+    return () => {
+      detachParentValueChangeHandler();
+      detachSlugValueChangeHandler();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
