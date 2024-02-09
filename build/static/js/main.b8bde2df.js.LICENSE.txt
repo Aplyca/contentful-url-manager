@@ -1,31 +1,24 @@
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
+/*! ../../../common-utils */
 
-/*!
-          * The buffer module from node.js, for the browser.
-          *
-          * @author   Feross Aboukhadijeh <http://feross.org>
-          * @license  MIT
-          */
+/*! ../../../helpers/AxiosURLSearchParams.js */
 
 /*! ../../../upload-http-client */
 
-/*! ../adapters/REST/endpoints/workflow-definition */
+/*! ../adapters/adapters.js */
 
-/*! ../adapters/xhr */
+/*! ../cancel/CanceledError.js */
 
-/*! ../cancel/CanceledError */
+/*! ../cancel/isCancel.js */
 
-/*! ../cancel/isCancel */
+/*! ../common-types */
 
 /*! ../common-utils */
 
-/*! ../core/AxiosError */
+/*! ../core/AxiosError.js */
 
-/*! ../core/buildFullPath */
+/*! ../core/AxiosHeaders.js */
+
+/*! ../core/buildFullPath.js */
 
 /*! ../create-app-definition-api */
 
@@ -43,29 +36,35 @@ object-assign
 
 /*! ../create-user-ui-config-api */
 
-/*! ../defaults */
+/*! ../defaults/index.js */
 
-/*! ../defaults/transitional */
+/*! ../defaults/transitional.js */
 
 /*! ../enhance-with-methods */
 
-/*! ../env/data */
+/*! ../env/data.js */
 
-/*! ../helpers/buildURL */
+/*! ../helpers/AxiosURLSearchParams.js */
 
-/*! ../helpers/combineURLs */
+/*! ../helpers/buildURL.js */
 
-/*! ../helpers/isAbsoluteURL */
+/*! ../helpers/combineURLs.js */
 
-/*! ../helpers/normalizeHeaderName */
+/*! ../helpers/formDataToJSON.js */
 
-/*! ../helpers/parseProtocol */
+/*! ../helpers/isAbsoluteURL.js */
 
-/*! ../helpers/toFormData */
+/*! ../helpers/parseHeaders.js */
 
-/*! ../helpers/validator */
+/*! ../helpers/parseProtocol.js */
 
-/*! ../lib/core/AxiosError */
+/*! ../helpers/speedometer.js */
+
+/*! ../helpers/toFormData.js */
+
+/*! ../helpers/toURLEncodedForm.js */
+
+/*! ../helpers/validator.js */
 
 /*! ../methods/action */
 
@@ -73,39 +72,35 @@ object-assign
 
 /*! ../plain/checks */
 
-/*! ../utils */
+/*! ../platform/index.js */
 
-/*! ./ */
+/*! ../platform/node/classes/FormData.js */
 
-/*! ./../../../../webpack/buildin/global.js */
+/*! ../utils.js */
 
-/*! ./../../../node-libs-browser/node_modules/buffer/index.js */
+/*! ./../core/settle.js */
 
-/*! ./../../../process/browser.js */
+/*! ./../helpers/buildURL.js */
 
-/*! ./../../../webpack/buildin/global.js */
+/*! ./../helpers/cookies.js */
 
-/*! ./../../process/browser.js */
+/*! ./../helpers/isURLSameOrigin.js */
 
-/*! ./../core/settle */
+/*! ./../utils.js */
 
-/*! ./../helpers/buildURL */
+/*! ./AxiosError.js */
 
-/*! ./../helpers/cookies */
+/*! ./AxiosHeaders.js */
 
-/*! ./../helpers/isURLSameOrigin */
+/*! ./CanceledError.js */
 
-/*! ./../helpers/parseHeaders */
+/*! ./InterceptorManager.js */
 
-/*! ./../utils */
-
-/*! ./AxiosError */
-
-/*! ./CanceledError */
-
-/*! ./InterceptorManager */
+/*! ./access-token */
 
 /*! ./adapters/REST/rest-adapter */
+
+/*! ./adapters/adapters.js */
 
 /*! ./api-key */
 
@@ -131,15 +126,21 @@ object-assign
 
 /*! ./asset-key */
 
-/*! ./buildFullPath */
+/*! ./buildFullPath.js */
 
 /*! ./bulk-action */
 
-/*! ./cancel/CancelToken */
+/*! ./cancel/CancelToken.js */
 
-/*! ./cancel/CanceledError */
+/*! ./cancel/CanceledError.js */
 
-/*! ./cancel/isCancel */
+/*! ./cancel/isCancel.js */
+
+/*! ./classes/Blob.js */
+
+/*! ./classes/FormData.js */
+
+/*! ./classes/URLSearchParams.js */
 
 /*! ./comment */
 
@@ -149,21 +150,23 @@ object-assign
 
 /*! ./content-type */
 
-/*! ./contentful-management.ts */
-
 /*! ./controls-defaults */
 
-/*! ./core/Axios */
+/*! ./core/Axios.js */
 
-/*! ./core/mergeConfig */
+/*! ./core/AxiosError.js */
+
+/*! ./core/AxiosHeaders.js */
+
+/*! ./core/mergeConfig.js */
 
 /*! ./create-adapter */
 
 /*! ./create-contentful-api */
 
-/*! ./defaults */
+/*! ./defaults/index.js */
 
-/*! ./dispatchRequest */
+/*! ./dispatchRequest.js */
 
 /*! ./editor-interface */
 
@@ -189,9 +192,7 @@ object-assign
 
 /*! ./entry */
 
-/*! ./env/FormData */
-
-/*! ./env/data */
+/*! ./env/data.js */
 
 /*! ./environment */
 
@@ -205,25 +206,25 @@ object-assign
 
 /*! ./extension */
 
-/*! ./formats */
+/*! ./helpers/HttpStatusCode.js */
 
-/*! ./helpers/bind */
+/*! ./helpers/bind.js */
 
-/*! ./helpers/isAxiosError */
+/*! ./helpers/formDataToJSON.js */
 
-/*! ./helpers/spread */
+/*! ./helpers/isAxiosError.js */
 
-/*! ./helpers/toFormData */
+/*! ./helpers/spread.js */
+
+/*! ./helpers/toFormData.js */
 
 /*! ./http */
 
-/*! ./implementation */
-
-/*! ./lib/axios */
+/*! ./http.js */
 
 /*! ./locale */
 
-/*! ./mergeConfig */
+/*! ./mergeConfig.js */
 
 /*! ./organization */
 
@@ -231,13 +232,13 @@ object-assign
 
 /*! ./organization-membership */
 
-/*! ./parse */
-
 /*! ./personal-access-token */
 
 /*! ./plain/as-iterator */
 
 /*! ./plain/checks */
+
+/*! ./plain/common-types */
 
 /*! ./plain/plain-client */
 
@@ -253,8 +254,6 @@ object-assign
 
 /*! ./scheduled-action */
 
-/*! ./shams */
-
 /*! ./sidebar-defaults */
 
 /*! ./snapshot */
@@ -264,8 +263,6 @@ object-assign
 /*! ./space-member */
 
 /*! ./space-membership */
-
-/*! ./stringify */
 
 /*! ./tag */
 
@@ -277,9 +274,11 @@ object-assign
 
 /*! ./team-space-membership */
 
-/*! ./transformData */
+/*! ./toFormData.js */
 
-/*! ./transitional */
+/*! ./transformData.js */
+
+/*! ./transitional.js */
 
 /*! ./types */
 
@@ -293,9 +292,9 @@ object-assign
 
 /*! ./user-ui-config */
 
-/*! ./util.inspect */
-
 /*! ./utils */
+
+/*! ./utils.js */
 
 /*! ./webhook */
 
@@ -307,275 +306,21 @@ object-assign
 
 /*! ./wrappers/wrap */
 
+/*! ./xhr.js */
+
 /*! axios */
-
-/*! base64-js */
-
-/*! call-bind/callBound */
 
 /*! contentful-sdk-core */
 
-/*! exports provided: ALPHA_FEATURE_WORKFLOWS, get, getMany, create, update, del */
-
-/*! exports provided: AppActionCategoryType, wrapAppAction, wrapAppActionCollection */
-
-/*! exports provided: AsyncActionProcessingError, AsyncActionFailedError, pollAsyncActionStatus */
-
-/*! exports provided: BulkActionStatus, wrapBulkAction */
-
-/*! exports provided: EntryEditorWidgetTypes, EntryConfiguration */
-
-/*! exports provided: FIELD_TYPES, toInternalFieldType, DEFAULTS_WIDGET, DEFAULTS_SETTINGS, toApiFieldType, default */
-
-/*! exports provided: IconType, wrapAppDetails */
-
-/*! exports provided: RestAdapter */
-
-/*! exports provided: ScheduledActionReferenceFilters */
-
-/*! exports provided: SidebarEntryConfiguration, SidebarAssetConfiguration */
-
-/*! exports provided: ValidationError, create */
-
-/*! exports provided: WidgetNamespace, DEFAULT_EDITOR_ID, in_ */
-
-/*! exports provided: WorkflowStepPermissionType, WorkflowStepPermissionAction, WorkflowStepPermissionEffect, WorkflowStepActionType, default, wrapWorkflowDefinition, wrapWorkflowDefinitionCollection */
-
-/*! exports provided: asIterator */
-
-/*! exports provided: asIterator, isDraft, isPublished, isUpdated, createClient, RestAdapter, editorInterfaceDefaults, ScheduledActionReferenceFilters */
-
-/*! exports provided: create */
-
-/*! exports provided: create, del, get */
-
-/*! exports provided: create, get */
-
-/*! exports provided: create, getCallDetails */
-
-/*! exports provided: createAdapter */
-
-/*! exports provided: createEnvironmentTemplateApi */
-
-/*! exports provided: createHttpClient, createRequestConfig, enforceObjPath, errorHandler, freezeSys, getUserAgentHeader, toPlainObject */
-
-/*! exports provided: createPlainClient */
-
-/*! exports provided: default */
-
-/*! exports provided: default, wrapComment, wrapCommentCollection */
-
-/*! exports provided: default, wrapScheduledAction, wrapScheduledActionCollection */
-
-/*! exports provided: default, wrapTag, wrapTagCollection */
-
-/*! exports provided: default, wrapTask, wrapTaskCollection */
-
-/*! exports provided: get, del, create */
-
-/*! exports provided: get, getMany */
-
-/*! exports provided: get, getMany, create, createWithId, update, del */
-
-/*! exports provided: get, getMany, create, createWithId, update, del, publish, unpublish */
-
-/*! exports provided: get, getMany, create, del, update */
-
-/*! exports provided: get, getMany, create, revoke */
-
-/*! exports provided: get, getMany, create, update, del */
-
-/*! exports provided: get, getMany, create, update, del, getAll */
-
-/*! exports provided: get, getMany, create, update, versionUpdate, del, versions, validate, install, disconnect */
-
-/*! exports provided: get, getMany, createWithId, update, del */
-
-/*! exports provided: get, getMany, del, create */
-
-/*! exports provided: get, getMany, getAll, create, update, del */
-
-/*! exports provided: get, getMany, getForOrganization, getManyForOrganization, create, createWithId, update, del */
-
-/*! exports provided: get, getMany, getForOrganization, getManyForOrganization, create, update, del */
-
-/*! exports provided: get, getMany, getManyForEnvironment, del, create, update */
-
-/*! exports provided: get, getMany, getManyForSpace, create, update, del */
-
-/*! exports provided: get, getMany, queryForRelease */
-
-/*! exports provided: get, getMany, update */
-
-/*! exports provided: get, getMany, update, del */
-
-/*! exports provided: get, getMany, update, del, create, createWithId */
-
-/*! exports provided: get, getMany, update, del, publish, unpublish, archive, unarchive, create, createWithId, createFromFiles, processForLocale, processForAllLocales */
-
-/*! exports provided: get, getManyCallDetails, getCallDetails, getHealthStatus, getMany, create, createWithId, update, del */
-
-/*! exports provided: get, getManyForOrganization, getManyForTeam, create, update, del */
-
-/*! exports provided: get, getPublished, getMany, patch, update, del, publish, unpublish, archive, unarchive, create, createWithId, references */
-
-/*! exports provided: get, patch, post, put, del, http */
-
-/*! exports provided: get, post, put, patch, del, request */
-
-/*! exports provided: get, publish, unpublish, validate */
-
-/*! exports provided: get, query, create, update, del, publish, unpublish, validate, archive, unarchive */
-
-/*! exports provided: get, update */
-
-/*! exports provided: get, upsert, del */
-
-/*! exports provided: getAppDefinitionUrl, get, getMany, create, update, del, getInstallationsForOrg */
-
-/*! exports provided: getAppInstallationUrl, get, getMany, upsert, del, getForOrganization */
-
-/*! exports provided: getExtensionUrl, get, getMany, create, createWithId, update, del */
-
-/*! exports provided: getForSpace, getCurrent, getManyForSpace, getForOrganization, getManyForOrganization */
-
-/*! exports provided: getMany */
-
-/*! exports provided: getMany, create, update, del, complete */
-
-/*! exports provided: getMany, get */
-
-/*! exports provided: getMany, getForEnvironment */
-
-/*! exports provided: getManyForEntry, getForEntry, getManyForContentType, getForContentType */
-
-/*! exports provided: getManyForSpace, getManyForOrganization */
-
-/*! exports provided: getUploadHttpClient */
-
-/*! exports provided: isPublished, isUpdated, isDraft, isArchived */
-
-/*! exports provided: normalizeSelect, normalizeSpaceId */
-
-/*! exports provided: omitAndDeleteField */
-
-/*! exports provided: sleep */
-
-/*! exports provided: wrap */
-
-/*! exports provided: wrapApiKey, wrapApiKeyCollection */
-
-/*! exports provided: wrapAppActionCall */
-
-/*! exports provided: wrapAppBundle, wrapAppBundleCollection */
-
-/*! exports provided: wrapAppDefinition, wrapAppDefinitionCollection */
-
-/*! exports provided: wrapAppInstallation, wrapAppInstallationCollection */
-
-/*! exports provided: wrapAppSignedRequest */
-
-/*! exports provided: wrapAppSigningSecret */
-
-/*! exports provided: wrapAppUpload, wrapAppUploadCollection */
-
-/*! exports provided: wrapAsset, wrapAssetCollection */
-
-/*! exports provided: wrapAssetKey */
-
-/*! exports provided: wrapCollection, wrapCursorPaginatedCollection */
-
-/*! exports provided: wrapContentType, wrapContentTypeCollection */
-
-/*! exports provided: wrapEditorInterface, wrapEditorInterfaceCollection */
-
-/*! exports provided: wrapEntry, wrapEntryCollection */
-
-/*! exports provided: wrapEnvironment, wrapEnvironmentCollection */
-
-/*! exports provided: wrapEnvironmentAlias, wrapEnvironmentAliasCollection */
-
-/*! exports provided: wrapEnvironmentTemplate, wrapEnvironmentTemplateCollection */
-
-/*! exports provided: wrapEnvironmentTemplateInstallation, wrapEnvironmentTemplateInstallationCollection */
-
-/*! exports provided: wrapExtension, wrapExtensionCollection */
-
-/*! exports provided: wrapLocale, wrapLocaleCollection */
-
-/*! exports provided: wrapOrganization, wrapOrganizationCollection */
-
-/*! exports provided: wrapOrganizationInvitation */
-
-/*! exports provided: wrapOrganizationMembership, wrapOrganizationMembershipCollection */
-
-/*! exports provided: wrapPersonalAccessToken, wrapPersonalAccessTokenCollection */
-
-/*! exports provided: wrapPreviewApiKey, wrapPreviewApiKeyCollection */
-
-/*! exports provided: wrapRelease, wrapReleaseCollection */
-
-/*! exports provided: wrapReleaseAction, wrapReleaseActionCollection */
-
-/*! exports provided: wrapRole, wrapRoleCollection */
-
-/*! exports provided: wrapSnapshot, wrapSnapshotCollection */
-
-/*! exports provided: wrapSpace, wrapSpaceCollection */
-
-/*! exports provided: wrapSpaceMember, wrapSpaceMemberCollection */
-
-/*! exports provided: wrapSpaceMembership, wrapSpaceMembershipCollection */
-
-/*! exports provided: wrapTeam, wrapTeamCollection */
-
-/*! exports provided: wrapTeamMembership, wrapTeamMembershipCollection */
-
-/*! exports provided: wrapTeamSpaceMembership, wrapTeamSpaceMembershipCollection */
-
-/*! exports provided: wrapUIConfig */
-
-/*! exports provided: wrapUpload */
-
-/*! exports provided: wrapUsage, wrapUsageCollection */
-
-/*! exports provided: wrapUser, wrapUserCollection */
-
-/*! exports provided: wrapUserUIConfig */
-
-/*! exports provided: wrapWebhook, wrapWebhookCollection */
-
 /*! fast-copy */
-
-/*! function-bind */
-
-/*! get-intrinsic */
-
-/*! has */
-
-/*! has-symbols */
-
-/*! ieee754 */
-
-/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
-
-/*! isarray */
 
 /*! lodash.isplainobject */
 
 /*! lodash.isstring */
 
-/*! no static exports found */
-
-/*! object-inspect */
-
 /*! p-throttle */
 
-/*! qs */
-
 /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
-
-/*! side-channel */
 
 /*!*************************!*\
         !*** ./common-types.ts ***!
@@ -698,6 +443,10 @@ object-assign
         \*******************************/
 
 /*!*******************************!*\
+        !*** ./plain/common-types.ts ***!
+        \*******************************/
+
+/*!*******************************!*\
         !*** ./plain/plain-client.ts ***!
         \*******************************/
 
@@ -719,10 +468,6 @@ object-assign
 
 /*!********************************!*\
         !*** ./plain/wrappers/wrap.ts ***!
-        \********************************/
-
-/*!********************************!*\
-        !*** ./util.inspect (ignored) ***!
         \********************************/
 
 /*!*********************************!*\
@@ -755,6 +500,10 @@ object-assign
 
 /*!**********************************!*\
         !*** ./create-contentful-api.ts ***!
+        \**********************************/
+
+/*!**********************************!*\
+        !*** ./entities/access-token.ts ***!
         \**********************************/
 
 /*!**********************************!*\
@@ -802,10 +551,6 @@ object-assign
         \*************************************/
 
 /*!**************************************!*\
-        !*** ../node_modules/axios/index.js ***!
-        \**************************************/
-
-/*!**************************************!*\
         !*** ./create-app-definition-api.ts ***!
         \**************************************/
 
@@ -830,36 +575,12 @@ object-assign
         \**************************************/
 
 /*!***************************************!*\
-        !*** ../node_modules/qs/lib/index.js ***!
-        \***************************************/
-
-/*!***************************************!*\
-        !*** ../node_modules/qs/lib/parse.js ***!
-        \***************************************/
-
-/*!***************************************!*\
-        !*** ../node_modules/qs/lib/utils.js ***!
-        \***************************************/
-
-/*!***************************************!*\
         !*** ./adapters/REST/rest-adapter.ts ***!
         \***************************************/
 
 /*!***************************************!*\
         !*** ./entities/environment-alias.ts ***!
         \***************************************/
-
-/*!****************************************!*\
-        !*** ../node_modules/has/src/index.js ***!
-        \****************************************/
-
-/*!****************************************!*\
-        !*** ../node_modules/ieee754/index.js ***!
-        \****************************************/
-
-/*!****************************************!*\
-        !*** ../node_modules/isarray/index.js ***!
-        \****************************************/
 
 /*!****************************************!*\
         !*** ./adapters/REST/endpoints/raw.ts ***!
@@ -876,14 +597,6 @@ object-assign
 /*!****************************************!*\
         !*** ./entities/app-signing-secret.ts ***!
         \****************************************/
-
-/*!****************************************!*\
-        !*** multi ./contentful-management.ts ***!
-        \****************************************/
-
-/*!*****************************************!*\
-        !*** ../node_modules/qs/lib/formats.js ***!
-        \*****************************************/
 
 /*!*****************************************!*\
         !*** ./adapters/REST/endpoints/http.ts ***!
@@ -915,18 +628,6 @@ object-assign
 
 /*!******************************************!*\
         !*** ../node_modules/axios/lib/utils.js ***!
-        \******************************************/
-
-/*!******************************************!*\
-        !*** ../node_modules/base64-js/index.js ***!
-        \******************************************/
-
-/*!******************************************!*\
-        !*** ../node_modules/call-bind/index.js ***!
-        \******************************************/
-
-/*!******************************************!*\
-        !*** ../node_modules/process/browser.js ***!
         \******************************************/
 
 /*!******************************************!*\
@@ -962,10 +663,6 @@ object-assign
         \*******************************************/
 
 /*!*******************************************!*\
-        !*** ../node_modules/qs/lib/stringify.js ***!
-        \*******************************************/
-
-/*!*******************************************!*\
         !*** ./adapters/REST/endpoints/locale.ts ***!
         \*******************************************/
 
@@ -980,14 +677,6 @@ object-assign
 /*!*******************************************!*\
         !*** ./entities/team-space-membership.ts ***!
         \*******************************************/
-
-/*!********************************************!*\
-        !*** ../node_modules/has-symbols/index.js ***!
-        \********************************************/
-
-/*!********************************************!*\
-        !*** ../node_modules/has-symbols/shams.js ***!
-        \********************************************/
 
 /*!********************************************!*\
         !*** ./adapters/REST/endpoints/api-key.ts ***!
@@ -1014,10 +703,6 @@ object-assign
         \*********************************************/
 
 /*!*********************************************!*\
-        !*** ../node_modules/side-channel/index.js ***!
-        \*********************************************/
-
-/*!*********************************************!*\
         !*** ./adapters/REST/endpoints/snapshot.ts ***!
         \*********************************************/
 
@@ -1034,18 +719,6 @@ object-assign
         \*********************************************/
 
 /*!**********************************************!*\
-        !*** ../node_modules/call-bind/callBound.js ***!
-        \**********************************************/
-
-/*!**********************************************!*\
-        !*** ../node_modules/function-bind/index.js ***!
-        \**********************************************/
-
-/*!**********************************************!*\
-        !*** ../node_modules/get-intrinsic/index.js ***!
-        \**********************************************/
-
-/*!**********************************************!*\
         !*** ./adapters/REST/endpoints/asset-key.ts ***!
         \**********************************************/
 
@@ -1059,10 +732,6 @@ object-assign
 
 /*!***********************************************!*\
         !*** ../node_modules/axios/lib/core/Axios.js ***!
-        \***********************************************/
-
-/*!***********************************************!*\
-        !*** ../node_modules/object-inspect/index.js ***!
         \***********************************************/
 
 /*!***********************************************!*\
@@ -1110,7 +779,7 @@ object-assign
         \*************************************************/
 
 /*!*************************************************!*\
-        !*** ../node_modules/webpack/buildin/global.js ***!
+        !*** ./adapters/REST/endpoints/access-token.ts ***!
         \*************************************************/
 
 /*!*************************************************!*\
@@ -1131,10 +800,6 @@ object-assign
 
 /*!***************************************************!*\
         !*** ../node_modules/axios/lib/helpers/spread.js ***!
-        \***************************************************/
-
-/*!***************************************************!*\
-        !*** ../node_modules/fast-copy/dist/umd/index.js ***!
         \***************************************************/
 
 /*!***************************************************!*\
@@ -1159,6 +824,10 @@ object-assign
 
 /*!****************************************************!*\
         !*** ../node_modules/axios/lib/helpers/cookies.js ***!
+        \****************************************************/
+
+/*!****************************************************!*\
+        !*** ../node_modules/fast-copy/dist/esm/index.mjs ***!
         \****************************************************/
 
 /*!****************************************************!*\
@@ -1202,6 +871,14 @@ object-assign
         \*****************************************************/
 
 /*!******************************************************!*\
+        !*** ../node_modules/axios/lib/adapters/adapters.js ***!
+        \******************************************************/
+
+/*!******************************************************!*\
+        !*** ../node_modules/axios/lib/core/AxiosHeaders.js ***!
+        \******************************************************/
+
+/*!******************************************************!*\
         !*** ../node_modules/axios/lib/helpers/validator.js ***!
         \******************************************************/
 
@@ -1234,10 +911,6 @@ object-assign
         \*******************************************************/
 
 /*!*******************************************************!*\
-        !*** ../node_modules/function-bind/implementation.js ***!
-        \*******************************************************/
-
-/*!*******************************************************!*\
         !*** ./adapters/REST/endpoints/app-signed-request.ts ***!
         \*******************************************************/
 
@@ -1251,6 +924,10 @@ object-assign
 
 /*!********************************************************!*\
         !*** ../node_modules/axios/lib/helpers/combineURLs.js ***!
+        \********************************************************/
+
+/*!********************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/speedometer.js ***!
         \********************************************************/
 
 /*!********************************************************!*\
@@ -1301,6 +978,18 @@ object-assign
         !*** ./adapters/REST/endpoints/team-space-membership.ts ***!
         \**********************************************************/
 
+/*!***********************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/HttpStatusCode.js ***!
+        \***********************************************************/
+
+/*!***********************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/formDataToJSON.js ***!
+        \***********************************************************/
+
+/*!***********************************************************!*\
+        !*** ../node_modules/axios/lib/platform/browser/index.js ***!
+        \***********************************************************/
+
 /*!************************************************************!*\
         !*** ../node_modules/axios/lib/core/InterceptorManager.js ***!
         \************************************************************/
@@ -1317,9 +1006,13 @@ object-assign
         !*** ./adapters/REST/endpoints/organization-membership.ts ***!
         \************************************************************/
 
-/*!****************************************************************!*\
-        !*** ../node_modules/axios/lib/helpers/normalizeHeaderName.js ***!
-        \****************************************************************/
+/*!*************************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/toURLEncodedForm.js ***!
+        \*************************************************************/
+
+/*!*****************************************************************!*\
+        !*** ../node_modules/axios/lib/helpers/AxiosURLSearchParams.js ***!
+        \*****************************************************************/
 
 /*!*****************************************************************!*\
         !*** ./constants/editor-interface-defaults/editors-defaults.ts ***!
@@ -1330,6 +1023,10 @@ object-assign
         \*****************************************************************/
 
 /*!******************************************************************!*\
+        !*** ../node_modules/axios/lib/platform/browser/classes/Blob.js ***!
+        \******************************************************************/
+
+/*!******************************************************************!*\
         !*** ./constants/editor-interface-defaults/controls-defaults.ts ***!
         \******************************************************************/
 
@@ -1338,27 +1035,23 @@ object-assign
         \********************************************************************/
 
 /*!**********************************************************************!*\
-        !*** ../node_modules/node-libs-browser/node_modules/buffer/index.js ***!
+        !*** ../node_modules/axios/lib/platform/browser/classes/FormData.js ***!
         \**********************************************************************/
 
 /*!**********************************************************************!*\
         !*** ./adapters/REST/endpoints/environment-template-installation.ts ***!
         \**********************************************************************/
 
+/*!*****************************************************************************!*\
+        !*** ../node_modules/axios/lib/platform/browser/classes/URLSearchParams.js ***!
+        \*****************************************************************************/
+
 /*!************************************************************************************!*\
         !*** ../node_modules/contentful-sdk-core/node_modules/fast-copy/dist/fast-copy.js ***!
         \************************************************************************************/
 
-/** @license React v0.20.2
- * scheduler.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-/** @license React v17.0.2
+/**
+ * @license React
  * react-dom.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -1367,7 +1060,8 @@ object-assign
  * LICENSE file in the root directory of this source tree.
  */
 
-/** @license React v17.0.2
+/**
+ * @license React
  * react-jsx-runtime.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -1376,8 +1070,19 @@ object-assign
  * LICENSE file in the root directory of this source tree.
  */
 
-/** @license React v17.0.2
+/**
+ * @license React
  * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
+ * scheduler.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
